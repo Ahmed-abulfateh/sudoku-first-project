@@ -1,0 +1,6 @@
+#grid { display: grid; grid-template-columns: repeat(9, 40px); }
+    
+
+    .cell { border: 1px solid #000; width: 40px; height: 40px; text-align: center; font-size: 20px; }
+   
+    .error { background: #f99; }
