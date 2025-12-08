@@ -44,6 +44,9 @@ const size = 9;
           // Show clue number or blank
           if(given[r][c]) cell.disabled = true;
           // Disable editing if it’s a clue
+            
+          
+          //events 
           cell.addEventListener('input', ()=> {
             // When user types in the cell...
             values[r][c] = Number(cell.value) || 0;
