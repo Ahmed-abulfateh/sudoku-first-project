@@ -58,7 +58,22 @@ const size = 9;
       }
     }
     buildGrid();
-    
+     function isValidPlacement(board, r, c, n){
+      // Check if placing number n at (r,c) is valid
+      for(let i=0;i<9;i++){
+        if(board[r][i]===n && i!==c) return false;
+        // Check row for duplicates
+        if(board[i][c]===n && i!==r) return false;
+        // Check column for duplicates
+      }
+      const br = Math.floor(r/3)*3, bc = Math.floor(c/3)*3;
+      // Find top-left corner of 9x9 box
+      for(let i=0;i<3;i++) for(let j=0;j<3;j++){
+        if(board[br+i][bc+j]===n && !(br+i===r && bc+j===c)) return false;
+        // Check 9x9 box for duplicates
+      }
+      return true;
+      // If no conflicts, placement is valid
+    }
 
-
-
+  
