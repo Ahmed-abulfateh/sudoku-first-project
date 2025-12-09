@@ -101,6 +101,14 @@ const size = 9;
       document.getElementById('status').textContent = ok ? "Looks good!" : "Conflicts found!";
       // Update status message depending on validity
     }
+    document.getElementById('check').addEventListener('click', checkBoard);
+    // When "Check" button is clicked, run checkBoard()
+
+    loadPuzzle(puzzle);
+    // Load the example puzzle into matrices
+
+    buildGrid();
+    // Build and display the grid with puzzle clues
 function buildGrid(){
   const grid = document.getElementById('grid');
   grid.innerHTML = '';
