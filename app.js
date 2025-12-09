@@ -75,6 +75,50 @@ const size = 9;
       return true;
       // If no conflicts, placement is valid
     }
-function checkBoard(){}
-      // Validate the entire board
-  
+function buildGrid(){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  for(let r=0;r<size;r++){
+    for(let c=0;c<size;c++){
+      const cell = document.createElement('input');
+      cell.className = 'cell';
+      cell.maxLength = 1;
+      cell.value = values[r][c] ? values[r][c] : '';
+
+      // Store row/col for navigation
+      cell.dataset.row = r;
+      cell.dataset.col = c;
+
+      if(given[r][c]) {
+        cell.readOnly = true;   // still focusable, but not editable
+        cell.classList.add('given'); // style clue numbers in blue
+      }
+
+      // Update values when typing (only if not given)
+      cell.addEventListener('input', ()=> {
+        if(!given[r][c]) {
+          values[r][c] = Number(cell.value) || 0;
+        }
+      });
+
+      // Arrow key navigation
+      cell.addEventListener('keydown', (e) => {
+        let newRow = r, newCol = c;
+        switch(e.key){
+          case 'ArrowUp':    newRow = r > 0 ? r-1 : r; break;
+          case 'ArrowDown':  newRow = r < size-1 ? r+1 : r; break;
+          case 'ArrowLeft':  newCol = c > 0 ? c-1 : c; break;
+          case 'ArrowRight': newCol = c < size-1 ? c+1 : c; break;
+        }
+        if(newRow !== r || newCol !== c){
+          const nextIndex = newRow*size + newCol;
+          grid.children[nextIndex].focus();
+          e.preventDefault();
+        }
+      });
+
+      grid.appendChild(cell);
+    }
+  }
+}
