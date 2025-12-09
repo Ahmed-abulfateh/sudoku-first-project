@@ -9,3 +9,37 @@
   color: #1565c0; /* deep blue for clues */
   font-weight: bold;
 }
+/* Check button styling */
+#check {
+  background: #1565c0;       /* deep blue */
+  color: #fff;               /* white text */
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Hover effect */
+#check:hover {
+  background: #1e88e5;       /* lighter blue */
+  box-shadow: 0 0 12px #64b5f6;
+  transform: scale(1.05);
+}
+
+/* Active (pressed) effect */
+#check:active {
+  background: #0d47a1;       /* darker blue */
+  transform: scale(0.95);
+}
+
+/* Disabled state */
+#check:disabled {
+  background: #90a4ae;
+  color: #eceff1;
+  cursor: not-allowed;
+  box-shadow: none;
+}
