@@ -50,3 +50,90 @@
   color: #fff;
   font-size: 18px;
   font-weight:bold;}
+
+  /* Container to place buttons at bottom-right of grid */
+#buttonContainer {
+  display: flex;
+  justify-content: flex-end; /* align to right */
+  gap: 10px;                 /* space between buttons */
+  margin-top: 15px;
+}
+
+/* Check button (blue) */
+#checkBtn {
+  background: #1565c0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#checkBtn:hover {
+  background: #1e88e5;
+  box-shadow: 0 0 12px #64b5f6;
+  transform: scale(1.05);
+}
+#checkBtn:active {
+  background: #0d47a1;
+  transform: scale(0.95);
+}
+
+/* Clear button (yellow) */
+#clearBtn {
+  background: #fbc02d;       /* golden yellow */
+  color: #333;               /* dark text for contrast */
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#clearBtn:hover {
+  background: #fdd835;       /* lighter yellow */
+  box-shadow: 0 0 12px #fff176;
+  transform: scale(1.05);
+}
+#clearBtn:active {
+  background: #f9a825;       /* deeper yellow */
+  transform: scale(0.95);
+}
+/* Full-page centering */
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
+  background: #f5f5f5;       /* optional light background */
+}
+
+/* Game container */
+#gameContainer {
+  display: flex;
+  flex-direction: column;    /* stack grid above buttons */
+  align-items: center;       /* center contents horizontally */
+  gap: 20px;                 /* space between grid and buttons */
+}
+
+/* Grid styling */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  gap: 4px;
+  justify-content: center;
+}
+
+/* Button container aligned to right of grid */
+#buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;               /* match grid width */
+}

@@ -156,6 +156,7 @@ function buildGrid(){
     }
   }
 }
+//event listener for clear button
 document.getElementById('clearBtn').addEventListener('click', () => {
   const cells = document.querySelectorAll('#grid .cell');
   cells.forEach((cell, index) => {
