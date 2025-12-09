@@ -67,10 +67,10 @@ const size = 9;
         // Check column for duplicates
       }
       const br = Math.floor(r/3)*3, bc = Math.floor(c/3)*3;
-      // Find top-left corner of 9x9 box
+      // Find top-left corner of 3x3 box
       for(let i=0;i<3;i++) for(let j=0;j<3;j++){
         if(board[br+i][bc+j]===n && !(br+i===r && bc+j===c)) return false;
-        // Check 9x9 box for duplicates
+        // Check 3x3 box for duplicates
       }
       return true;
       // If no conflicts, placement is valid
