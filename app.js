@@ -156,4 +156,15 @@ function buildGrid(){
     }
   }
 }
+document.getElementById('clearBtn').addEventListener('click', () => {
+  const cells = document.querySelectorAll('#grid .cell');
+  cells.forEach((cell, index) => {
+    const r = Math.floor(index / size);
+    const c = index % size;
+    if (given[r][c] === 0) { // only clear user-entered values
+      cell.value = '';
+      values[r][c] = 0;
+    }
+  });
+});
 
