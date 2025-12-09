@@ -75,6 +75,32 @@ const size = 9;
       return true;
       // If no conflicts, placement is valid
     }
+     function checkBoard(){
+      // Validate the entire board
+      const cells = document.querySelectorAll('.cell');
+      // Get all cell elements
+      let ok = true;
+      // Assume board is valid initially
+      for(let r=0;r<9;r++){
+        for(let c=0;c<9;c++){
+          const idx = r*9+c;
+          // Calculate index in flat cell list
+          cells[idx].classList.remove('error');
+          // Clear previous error highlight
+          const v = values[r][c];
+          // Current value in cell
+          if(v && !isValidPlacement(values,r,c,v)){
+            // If value exists but is invalid...
+            cells[idx].classList.add('error');
+            // Highlight cell as error
+            ok = false;
+            // Mark board as not valid
+          }
+        }
+      }
+      document.getElementById('status').textContent = ok ? "Looks good!" : "Conflicts found!";
+      // Update status message depending on validity
+    }
 function buildGrid(){
   const grid = document.getElementById('grid');
   grid.innerHTML = '';
@@ -122,3 +148,4 @@ function buildGrid(){
     }
   }
 }
+
