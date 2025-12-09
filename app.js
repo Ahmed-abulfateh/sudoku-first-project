@@ -75,5 +75,6 @@ const size = 9;
       return true;
       // If no conflicts, placement is valid
     }
-
+function checkBoard(){}
+      // Validate the entire board
   
