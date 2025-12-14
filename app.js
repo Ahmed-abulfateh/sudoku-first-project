@@ -7,7 +7,8 @@ const size = 9;
     let values = Array.from({length:size}, ()=> Array(size).fill(0));
     // Matrix to store current values entered by the user
 
-    // Example puzzle (string of 81 digits, 0 = blank)
+    // Example puzzle (string of 81 digits, 0 = blank) //exmple winning 534678912672195348198342567859761423426853791713924856961537284287419635345286179
+
     const puzzle = "530070000600195000098000060800060003400803001700020006060000280000419005000080079";
 
     function loadPuzzle(str){
@@ -168,4 +169,28 @@ document.getElementById('clearBtn').addEventListener('click', () => {
     }
   });
 });
+function checkBoard() {
+  // Validate the entire board
+  const cells = document.querySelectorAll('.cell');
+  let ok = true;
+  let blanks = 0;
 
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      const idx = r * 9 + c;
+      cells[idx].classList.remove('error');
+      const v = values[r][c];
+
+      if (v === 0) {
+        blanks++; // count blanks
+        continue;
+      }
+
+      if (!isValidPlacement(values, r, c, v)) {
+        cells[idx].classList.add('error');
+        ok = false;
+      }
+    }
+  }
+
+  
