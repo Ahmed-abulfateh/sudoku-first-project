@@ -171,26 +171,54 @@ document.getElementById('clearBtn').addEventListener('click', () => {
 });
 function checkBoard() {
   // Validate the entire board
-  const cells = document.querySelectorAll('.cell');
-  let ok = true;
-  let blanks = 0;
 
+  const cells = document.querySelectorAll('.cell'); 
+  // Select all DOM elements with the class "cell" (these represent Sudoku cells).
+
+  let ok = true; 
+  // Flag to track if the board is valid so far. Assume true until proven otherwise.
+
+  let blanks = 0; 
+  // Counter to track how many empty cells (value 0) are left.
+
+  // Loop through all rows (0–8)
   for (let r = 0; r < 9; r++) {
+    // Loop through all columns (0–8)
     for (let c = 0; c < 9; c++) {
-      const idx = r * 9 + c;
-      cells[idx].classList.remove('error');
-      const v = values[r][c];
+      const idx = r * 9 + c; 
+      // Convert row/column coordinates into a single index (0–80) for the flat cells NodeList.
+
+      cells[idx].classList.remove('error'); 
+      // Clear any previous "error" highlighting from this cell.
+
+      const v = values[r][c]; 
+      // Get the current value stored in the Sudoku board array at row r, column c.
 
       if (v === 0) {
-        blanks++; // count blanks
-        continue;
+        blanks++; // If the cell is empty (0), increment the blank counter.
+        continue; // Skip further checks for this cell.
       }
 
       if (!isValidPlacement(values, r, c, v)) {
-        cells[idx].classList.add('error');
-        ok = false;
+        // Check if the current value violates Sudoku rules (duplicate in row/col/box).
+        cells[idx].classList.add('error'); 
+        // If invalid, visually mark this cell with the "error" class.
+        ok = false; 
+        // Set the flag to false because the board has conflicts.
       }
     }
   }
 
-  
+  // Decide message based on validation results
+  if (ok && blanks === 0) {
+    // If no conflicts AND no blanks, the puzzle is solved.
+    document.getElementById('status').textContent = "🎉 Congratulations, you solved the puzzle!";
+  } else if (ok) {
+    // If no conflicts but there are still blanks, the board looks good so far.
+    document.getElementById('status').textContent = "Looks good!";
+  } else {
+    // If conflicts were found, show an error message.
+    document.getElementById('status').textContent = "Conflicts found!";
+  }
+}
+
